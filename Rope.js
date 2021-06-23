@@ -14,7 +14,7 @@ class Rope {
 
 
 attach(body){
-    this.sling.bodyA = body;
+    this.rope.bodyA = body;
 }
 
   fly() {
