@@ -8,6 +8,9 @@ var box1, box2, box3,box4,box5,box6,box7,box8,box9,box10, ground;
 var ball, rope;
 var score = 0;
 
+var gameState = "attached";
+
+
 function setup() {
   createCanvas(1200, 500);
   engine = Engine.create();
@@ -105,17 +108,23 @@ function draw() {
 
 
 function mouseDragged() {
+  if(gameState!=="released"){
   Matter.Body.setPosition(ball.body, { x: mouseX, y: mouseY });
+  }
 }
 
 function mouseReleased(){
   rope.fly();
+  gameState = "released";
+
 }
 
 function keyPressed(){
   if(keyCode === 32){
-      Matter.Body.setPosition(ball.body, {x: 230 , y: 370});
+      Matter.Body.setPosition(ball.body, {x: 500 , y: 150});
       rope.attach(ball.body);
+      gameState="attached";
+
    
   }
 }
